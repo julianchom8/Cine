@@ -5,125 +5,77 @@
  */
 package proyecto_cine;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentListener;
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 import javax.swing.JButton;
-import javax.swing.JPanel;
 
 /**
  *
  * @author familia medina
  */
 public class Sillas extends javax.swing.JFrame {
-   private int numero_sala ; 
-   private int capacidad;
-    
-   int i=0, x=0, y=5 ,  j = 0, k = 0;
-    String fila[];
-    String colum[];
-    String fi, co;
-    int fil = 0;
-    int col = 0;
-    int nsalasa;
-    JButton jButton1,jButton2;
-    JPanel sillasn;
+  private int filas ; 
+   private int columnas ;
+   private int capacidad ;
 
-
-
-    public Sillas() {
- 
+   ventana_usuario datos ;
+   
+   JButton[][] cuadro;
+   
+    public Sillas(){
+        datos = new ventana_usuario();
         initComponents();
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        verMatriz();
     }
-    public void crear(){
-        Container contenedor = getContentPane();
-        contenedor.setLayout(new GridLayout(1,150));
-        sillasn = new JPanel();
-        sillasn.setBackground(Color.RED);
-        jScrollPanel = new javax.swing.JScrollPane();
-        
-        int a1=0;
-        int div;
-          if(capacidad>10 && capacidad<31){
-          div = 2;
-          
-          }
-          if(capacidad<11){
-          
-          div = 1;
-          
-          }
-          
-          else{
-          
-          div = capacidad/10;    
-          
-          }
-       sillasn.setLayout( new GridLayout(div,1));  
  
-        while (j<capacidad){
-            k=0;
-            x=0;
-        JButton jButton1 = new javax.swing.JButton();
-        jButton1.setText(""+i);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+    public void verMatriz(){
+        
+        capacidad = datos.getCapacidad();
+        
+        
+        
+        int aux = capacidad /2 ; 
+        System.out.print(aux+"-");
+        filas = aux ;
+        columnas = aux ; 
+        cuadro = new JButton[filas][columnas];
+        int x = 10 ;
+        int y = 15 ;
+        for (int i = 0 ;  i<filas ; i++){
+            for(int j = 0 ;  j<columnas ; j++){
+                cuadro[i][j]= new JButton();
+                cuadro[i][j].setBackground(Color.green);
+                cuadro[i][j].setBounds(x,y,30,30);
+                
+                
+                Controlar bt = new Controlar();
+                cuadro[i][j].addActionListener(bt);
+                panelBotones.add(cuadro[i][j]);
+                
+                x+=35; // ubicacion en el panell no cambiar  
             }
-        });
-        jButton1.setBounds(x, y, 100, 100);
-            
-        sillasn.add(jButton1);
+            x=10; // ubicacion , no cambiar 
+            y+=35;// ubicacion , no cambiar 
+        }   
+    }
     
-        i++;
-        x=x+100;
-        k++;
-            y= y+100;
-            j++;
+    private class Controlar implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+                for (int i = 0 ;  i<filas ; i++){
+                    for (int j = 0 ;  j<columnas ; j++){
+                        if(e.getSource().equals(cuadro[i][j])){
+                            cuadro[i][j].setBackground(Color.red);
+                        }   
+                    }   
+                 }
         }
-        add(jScrollPanel, BorderLayout.CENTER);
-        jScrollPanel.setViewportView(sillasn);
-       
-        i=0; 
-        x=0; 
-        y=5;  
-        j = 0;
-        k = 0;
-        
-        
-    } 
-    public void ejem(){
+      
         
     }
-           
-      public void jButton1ActionPerformed(java.awt.event.ActionEvent evt){
-         i=0;
-         while(i<capacidad){
-         if(evt.getActionCommand().equals(""+i)){
-       
-        System.out.println(""+i);
-           
-        }
-  
-         i++;
-         }
-     }
-      
+    
     
  
          
@@ -136,17 +88,32 @@ public class Sillas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelBotones = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout panelBotonesLayout = new javax.swing.GroupLayout(panelBotones);
+        panelBotones.setLayout(panelBotonesLayout);
+        panelBotonesLayout.setHorizontalGroup(
+            panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1115, Short.MAX_VALUE)
+        );
+        panelBotonesLayout.setVerticalGroup(
+            panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 753, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1080, Short.MAX_VALUE)
+            .addComponent(panelBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 589, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         pack();
@@ -190,5 +157,6 @@ public class Sillas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPanel;
     private AdjustmentListener ajustar;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel panelBotones;
     // End of variables declaration//GEN-END:variables
 }
