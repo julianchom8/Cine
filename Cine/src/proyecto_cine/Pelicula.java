@@ -7,7 +7,7 @@ package proyecto_cine;
 
 /**
  *
- * @author David
+ * @author David es gay
  */
 public class Pelicula {
     

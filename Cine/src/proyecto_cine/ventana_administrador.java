@@ -58,6 +58,7 @@ public final class ventana_administrador extends javax.swing.JFrame {
         peli_transmitir.setVisible(false);
         h.setVisible(false);
         h1.setVisible(false);
+        cap.setVisible(false);
         hora_peli.setVisible(false);
         limpiarDatosPeli();
     }
@@ -358,6 +359,9 @@ public final class ventana_administrador extends javax.swing.JFrame {
             cadena = cadena + dato + ",";
             dato = h1.getText();
             cadena = cadena + dato + ",";
+            dato = cp.getText();
+            cadena = cadena + dato + ",";
+            
             
             if (  c.equals(validarHorario(c,2))){
             mensaje("este horario ya esta ocupado");
@@ -475,6 +479,7 @@ public final class ventana_administrador extends javax.swing.JFrame {
             sala = proceso_sala.obtenerRegistro(i);
             
             mSalas.addItem(String.valueOf(sala.getCodigoSala())); 
+            cap.addItem(String.valueOf(sala.getCapacidad())); 
             
         }
          
@@ -489,136 +494,6 @@ public final class ventana_administrador extends javax.swing.JFrame {
         }
           
    }
-    int i = 1,i2=0,i3=0;
-     File f11;
-      int nsalasa,ll;
-      String nom;
-     public void creararchivo()  {
-    
- /////////////////////////
-                         ////////////////////////////////////
-        
-      File archivo = null;
-      FileReader fr = null;
-      BufferedReader br = null;
-
-      try {
-         // Apertura del fichero y creacion de BufferedReader para poder
-         // hacer una lectura comoda (disponer del metodo readLine()).
-         archivo = new File ("num_salas.txt");
-         fr = new FileReader (archivo);
-         br = new BufferedReader(fr);
- 
-         // Lectura del fichero
-         String linea;
-       
-         linea=br.readLine();
-         
-         String  nsal[]=linea.split(";");
-        
-          nsalasa = Integer.parseInt(nsal[0]);
-         
-         nom = Integer.toString(nsalasa);
-         //	if(cads[1].equals("535353"))
-            	
-        
-      }
-      catch(Exception e){
-         e.printStackTrace();
-      }finally{
-         // En el finally cerramos el fichero, para asegurarnos
-         // que se cierra tanto si todo va bien como si salta 
-         // una excepcion.
-         try{                    
-            if( null != fr ){   
-               fr.close();     
-            }                  
-         }catch (Exception e2){ 
-            e2.printStackTrace();
-         }
-      }
-      ////
-      ////
-      nsalasa++;
-      
-        String cadena[]= new String[10]; 
-     int as= nsalasa;
-     System.out.println(as);
-        try {
-            
-          File  fj = new File("sala"+as+".txt");
-            
-        } catch (Exception ex) {
-            
-            ex.printStackTrace();
-            
-        }
-       
-     
-   File f = new File("sala"+as+".txt");
-   PrintWriter pw = null;
-   
-   
-        try {
-           try (FileWriter fry = new FileWriter(f)) {
-                pw = new PrintWriter(fry);
-               cadena[0] =  capacidad_sala.getText();              
-               
-              
-               
-               fry.write(cadena[0]+";\n");
-                 
-               
-                      pw.println("");
-
-                      fry.close();
-           }
-            
-        } catch (Exception ex) {
-            
-            ex.printStackTrace();
-            
-        }
- 
-    };
-   
-   
-   public void contansalacre(){
-  
-       
-       
-     int as= nsalasa;
-   File fd = new File("n_salaabrir.txt");
-   PrintWriter pw = null;
-   
-   
-        try {
-           try (FileWriter frd = new FileWriter(fd)) {
-                pw = new PrintWriter(frd);
-                              
-             
-               
-            String ingw = Integer.toString(nsalasa);
-               
-               frd.write(ingw+";\n");
-                
-               
-                      pw.println("");
-
-                      frd.close();
-           }
-            
-        } catch (Exception ex) {
-            
-            ex.printStackTrace();
-            
-        }
-        ///////////////////////////////
-        //////////////
-        ////////
-
-    
-    }
  
     private void mensaje(String texto){
         JOptionPane.showMessageDialog(null, texto);
@@ -666,10 +541,14 @@ public final class ventana_administrador extends javax.swing.JFrame {
         h = new javax.swing.JTextField();
         hora_peli = new javax.swing.JTextField();
         h1 = new javax.swing.JTextField();
+        cp = new javax.swing.JTextField();
+        cap = new javax.swing.JComboBox<>();
         manSala = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         verSala = new javax.swing.JTable();
         nombreS = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         panelpeliculas = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -690,6 +569,7 @@ public final class ventana_administrador extends javax.swing.JFrame {
         limpiar = new javax.swing.JButton();
         imagen = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         atras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -917,22 +797,27 @@ public final class ventana_administrador extends javax.swing.JFrame {
                         .addComponent(peli_transmitir))
                     .addGroup(manLayout.createSequentialGroup()
                         .addGroup(manLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel18))
+                            .addGroup(manLayout.createSequentialGroup()
+                                .addComponent(horarios, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(hora_peli, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(h1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(manLayout.createSequentialGroup()
+                                .addGap(95, 95, 95)
+                                .addComponent(agregarPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addGroup(manLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cp, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(h, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(manLayout.createSequentialGroup()
+                        .addComponent(jLabel17)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(manLayout.createSequentialGroup()
-                        .addComponent(horarios, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(hora_peli, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(h1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                        .addComponent(h, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cap, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10))
-            .addGroup(manLayout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(agregarPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         manLayout.setVerticalGroup(
             manLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -944,7 +829,9 @@ public final class ventana_administrador extends javax.swing.JFrame {
                     .addComponent(peli_transmitir, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                     .addComponent(pelicula_transmitir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(manLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(manLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(horarios, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
@@ -952,7 +839,9 @@ public final class ventana_administrador extends javax.swing.JFrame {
                     .addComponent(h)
                     .addComponent(h1))
                 .addGap(18, 18, 18)
-                .addComponent(agregarPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(manLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(agregarPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -1046,6 +935,10 @@ public final class ventana_administrador extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
+
         javax.swing.GroupLayout panelsalasLayout = new javax.swing.GroupLayout(panelsalas);
         panelsalas.setLayout(panelsalasLayout);
         panelsalasLayout.setHorizontalGroup(
@@ -1060,7 +953,17 @@ public final class ventana_administrador extends javax.swing.JFrame {
                     .addGroup(panelsalasLayout.createSequentialGroup()
                         .addGap(260, 260, 260)
                         .addComponent(jLabel6)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
+            .addGroup(panelsalasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelsalasLayout.createSequentialGroup()
+                    .addGap(197, 197, 197)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(280, Short.MAX_VALUE)))
+            .addGroup(panelsalasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelsalasLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 1036, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(11, Short.MAX_VALUE)))
         );
         panelsalasLayout.setVerticalGroup(
             panelsalasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1071,7 +974,16 @@ public final class ventana_administrador extends javax.swing.JFrame {
                 .addGroup(panelsalasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(445, Short.MAX_VALUE))
+            .addGroup(panelsalasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelsalasLayout.createSequentialGroup()
+                    .addGap(140, 140, 140)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(574, Short.MAX_VALUE)))
+            .addGroup(panelsalasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelsalasLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Administrar Salas", panelsalas);
@@ -1264,24 +1176,31 @@ public final class ventana_administrador extends javax.swing.JFrame {
                         .addComponent(jLabel11))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 9, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7))
+                .addContainerGap())
         );
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
 
         javax.swing.GroupLayout panelpeliculasLayout = new javax.swing.GroupLayout(panelpeliculas);
         panelpeliculas.setLayout(panelpeliculasLayout);
         panelpeliculasLayout.setHorizontalGroup(
             panelpeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelpeliculasLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(347, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(246, 246, 246))
             .addGroup(panelpeliculasLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelpeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelpeliculasLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 1036, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(11, Short.MAX_VALUE)))
         );
         panelpeliculasLayout.setVerticalGroup(
             panelpeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1289,8 +1208,13 @@ public final class ventana_administrador extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(460, Short.MAX_VALUE))
+            .addGroup(panelpeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelpeliculasLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         jTabbedPane1.addTab("Administrar peliculas", panelpeliculas);
@@ -1306,11 +1230,13 @@ public final class ventana_administrador extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(atras)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1072, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1361,7 +1287,6 @@ public final class ventana_administrador extends javax.swing.JFrame {
         }catch(Exception ex){
 
         }
-        
     }//GEN-LAST:event_lista_peliculasMouseClicked
 
     private void eliminar_peliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_peliculaActionPerformed
@@ -1436,6 +1361,10 @@ public final class ventana_administrador extends javax.swing.JFrame {
         manSala.setVisible(true);
         pelis();
         sal = (String)mSalas.getSelectedItem();
+        int sele =  mSalas.getSelectedIndex();
+        
+        String capa = cap.getItemAt(sele);
+        cp.setText(capa);
         nombreS.setText("Sala: "+sal);
         h1.setText(sal);
         //llama la sala seleccionada para agregar pleiculas y hora
@@ -1508,8 +1437,10 @@ public final class ventana_administrador extends javax.swing.JFrame {
     private javax.swing.JButton agregarPelicula;
     private javax.swing.JButton atras;
     private javax.swing.JButton buscar_foto;
+    private javax.swing.JComboBox<String> cap;
     private javax.swing.JTextField capacidad_sala;
     private javax.swing.JTextField codigo_pelicula;
+    private javax.swing.JTextField cp;
     private javax.swing.JButton eliminar_pelicula;
     private javax.swing.JButton eliminar_sala;
     private javax.swing.JButton guardar_pelicula;
@@ -1524,6 +1455,9 @@ public final class ventana_administrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;

@@ -50,11 +50,8 @@ public class Sillas extends javax.swing.JFrame {
     private Sillas(int sala , int capacidad) {
          this.numero_sala=sala;
         this.capacidad=capacidad;
-
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    Sillas() {
+        initComponents();
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     public void crear(){
@@ -114,7 +111,11 @@ public class Sillas extends javax.swing.JFrame {
         k = 0;
         
         
-    }            
+    } 
+    public void ejem(){
+        
+    }
+           
       public void jButton1ActionPerformed(java.awt.event.ActionEvent evt){
          i=0;
          while(i<capacidad){
@@ -127,6 +128,7 @@ public class Sillas extends javax.swing.JFrame {
          i++;
          }
      }
+      
     
  
          

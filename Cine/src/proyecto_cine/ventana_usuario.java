@@ -134,7 +134,7 @@ public final class ventana_usuario extends javax.swing.JFrame {
             while((cadena=linea.readLine()) != null){ //recorre todo el archivo
                 String dato[] = cadena.split(",");
                 if(dato[index].equals(filtro)){
-                    busqueda = dato[0]+","+dato[1]+","+dato[3]+","; 
+                    busqueda = dato[0]+","+dato[1]+","+dato[3]+","+dato[4]; 
                     llenar(busqueda);
                     
                 }
@@ -184,6 +184,7 @@ public final class ventana_usuario extends javax.swing.JFrame {
         tabla.addColumn("pelicula");
         tabla.addColumn("Horario ");
         tabla.addColumn("sala");
+        tabla.addColumn("capcidad");
         
         Object fila[] = new Object[tabla.getColumnCount()];
         
@@ -202,6 +203,7 @@ public final class ventana_usuario extends javax.swing.JFrame {
                 fila[0] = dato[0];
                 fila[1] = dato[1];
                 fila[2] = dato[2];
+                fila[3] = dato[3];
                 tabla.addRow(fila);  
 
             }
@@ -272,7 +274,9 @@ public final class ventana_usuario extends javax.swing.JFrame {
         horaaver = new javax.swing.JLabel();
         salaaver = new javax.swing.JLabel();
         ver_1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        capaver = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        factura = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
 
@@ -350,10 +354,15 @@ public final class ventana_usuario extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Factura");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setText("capacidad");
+
+        factura.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        factura.setText("Factura");
+        factura.setToolTipText("");
+        factura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                facturaActionPerformed(evt);
             }
         });
 
@@ -382,16 +391,22 @@ public final class ventana_usuario extends javax.swing.JFrame {
                                 .addComponent(peliaver, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelLayout.createSequentialGroup()
                                 .addGap(3, 3, 3)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(salaaver, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelLayout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(capaver, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelLayout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(salaaver, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ver_1)))
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ver_1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                                .addComponent(factura)
+                                .addGap(21, 21, 21)))))
                 .addContainerGap(20, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(61, 61, 61))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,7 +419,7 @@ public final class ventana_usuario extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                    .addGroup(panelLayout.createSequentialGroup()
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(peliaver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -412,14 +427,21 @@ public final class ventana_usuario extends javax.swing.JFrame {
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(horaaver, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(ver_1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(ver_1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(salaaver, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(29, 29, 29))
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(salaaver, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(capaver, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)))
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(factura)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         jButton1.setText("atras");
@@ -429,6 +451,7 @@ public final class ventana_usuario extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -446,25 +469,24 @@ public final class ventana_usuario extends javax.swing.JFrame {
                     .addComponent(pel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 714, Short.MAX_VALUE))
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 736, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(11, 11, 11)
-                        .addComponent(jButton1)
-                        .addContainerGap())
+                        .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(pel3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 40, Short.MAX_VALUE))))
+                        .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(22, 22, 22))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 488, Short.MAX_VALUE))
+                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 508, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -475,19 +497,18 @@ public final class ventana_usuario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
     private void ver_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ver_1ActionPerformed
-
-        try {
+         try {
            
-            String s = String.valueOf(lista.getValueAt(clic_tabla, 2));
-            int sal = Integer.parseInt(s);
-            salaaver.setText(String.valueOf(sal));
+            String s = String.valueOf(lista.getValueAt(clic_tabla, 3));
+            int cap = Integer.parseInt(s);
+            salaaver.setText(String.valueOf(cap));
 
                       
            
@@ -503,6 +524,7 @@ public final class ventana_usuario extends javax.swing.JFrame {
         Sillas nj = new Sillas();
         nj.setVisible(true);
         nj.setLocationRelativeTo(null);         
+               
     }//GEN-LAST:event_ver_1ActionPerformed
 
     private void seleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionActionPerformed
@@ -530,20 +552,22 @@ public final class ventana_usuario extends javax.swing.JFrame {
             String nombre = ""+lista.getValueAt(clic_tabla, 0);
             String horario = ""+lista.getValueAt(clic_tabla, 1);
             String s = String.valueOf(lista.getValueAt(clic_tabla, 2));
+            String c = String.valueOf(lista.getValueAt(clic_tabla, 3));
+            int ca = Integer.parseInt(c);
             int sal = Integer.parseInt(s);
 
-            peliaver.setText(nombre); //nombre = variable 
-            horaaver.setText(horario); 
-            salaaver.setText(String.valueOf(sal));//sala ; //leyendolo se saca cap 
-             
+            peliaver.setText(nombre);
+            horaaver.setText(horario);
+            salaaver.setText(String.valueOf(sal));
+            capaver.setText(String.valueOf(ca));
  
     }//GEN-LAST:event_listaMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-             recibo b = new recibo();
-             b.setVisible(true);
+    private void facturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturaActionPerformed
+          recibo r = new recibo();
+          r.setVisible(true);
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_facturaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -583,14 +607,16 @@ public final class ventana_usuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JLabel capaver;
+    private javax.swing.JButton factura;
     private javax.swing.JLabel horaaver;
     private javax.swing.JLabel imagen;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
