@@ -7,8 +7,9 @@ package proyecto_cine;
 
 /**
  *
- * @author David el cacorro torres
+ * @author David 
  */
+//cacorro
 public class Pelicula {
     
     private int codigo;
