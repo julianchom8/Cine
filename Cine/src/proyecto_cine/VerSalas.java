@@ -17,11 +17,12 @@ public class VerSalas extends javax.swing.JFrame {
     int fila = 5;
     int col = 5 ;
     
-     JButton[][] boton;
+    JButton[][] boton;
     JPanel sillas;
     
     public VerSalas() {
         initComponents();
+        
         sillas = new JPanel();
         try {  
 
