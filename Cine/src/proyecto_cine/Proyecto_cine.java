@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package proyecto_cine;
-
+//niggaaaaaa 
 /**
  *
  * @author familia pinillos
