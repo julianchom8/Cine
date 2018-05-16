@@ -7,7 +7,7 @@ package proyecto_cine;
 
 /**
  *
- * @author David es gay
+ * @author David el cacorro torres
  */
 public class Pelicula {
     

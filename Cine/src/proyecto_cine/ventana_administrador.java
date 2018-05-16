@@ -547,7 +547,6 @@ public final class ventana_administrador extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         verSala = new javax.swing.JTable();
         nombreS = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         panelpeliculas = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -935,8 +934,6 @@ public final class ventana_administrador extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
-
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
 
         javax.swing.GroupLayout panelsalasLayout = new javax.swing.GroupLayout(panelsalas);
@@ -956,11 +953,6 @@ public final class ventana_administrador extends javax.swing.JFrame {
                 .addContainerGap(124, Short.MAX_VALUE))
             .addGroup(panelsalasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelsalasLayout.createSequentialGroup()
-                    .addGap(197, 197, 197)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(280, Short.MAX_VALUE)))
-            .addGroup(panelsalasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelsalasLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 1036, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(11, Short.MAX_VALUE)))
@@ -975,11 +967,6 @@ public final class ventana_administrador extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(445, Short.MAX_VALUE))
-            .addGroup(panelsalasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelsalasLayout.createSequentialGroup()
-                    .addGap(140, 140, 140)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(574, Short.MAX_VALUE)))
             .addGroup(panelsalasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelsalasLayout.createSequentialGroup()
                     .addContainerGap()
@@ -1455,7 +1442,6 @@ public final class ventana_administrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
