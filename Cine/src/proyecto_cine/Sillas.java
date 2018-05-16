@@ -40,16 +40,11 @@ public class Sillas extends javax.swing.JFrame {
     int nsalasa;
     JButton jButton1,jButton2;
     JPanel sillasn;
-    /**
-     * Creates new form Sillas
-     * @param sala
-     * @param capacidad
-     */
 
 
-    private Sillas(int sala , int capacidad) {
-         this.numero_sala=sala;
-        this.capacidad=capacidad;
+
+    public Sillas() {
+ 
         initComponents();
         
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
