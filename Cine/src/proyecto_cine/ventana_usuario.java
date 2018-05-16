@@ -24,12 +24,15 @@ import javax.swing.table.DefaultTableModel;
 public final class ventana_usuario extends javax.swing.JFrame {
     private String rutas_peli = "peliculas.txt"; //asigna nombre el archivo peliculas
     private String rutas_salas = "salas.txt"; //asigna el nombre al archivo salas 
+    public static int capacidad ; 
     int clic_tabla;
     Pelicula peli; //clase pelicula
     Sala sala; //clase sala
     
     Proceso proceso_pelicula; // 
     Procesos proceso_sala;
+    
+
     /**
      * Creates new form ventana_usuario
      */
@@ -184,7 +187,6 @@ public final class ventana_usuario extends javax.swing.JFrame {
         tabla.addColumn("pelicula");
         tabla.addColumn("Horario ");
         tabla.addColumn("sala");
-        tabla.addColumn("capcidad");
         
         Object fila[] = new Object[tabla.getColumnCount()];
         
@@ -203,7 +205,6 @@ public final class ventana_usuario extends javax.swing.JFrame {
                 fila[0] = dato[0];
                 fila[1] = dato[1];
                 fila[2] = dato[2];
-                fila[3] = dato[3];
                 tabla.addRow(fila);  
 
             }
@@ -237,6 +238,43 @@ public final class ventana_usuario extends javax.swing.JFrame {
         } catch (IOException ioe) {
         }    
     }
+        public void buscarCapacidad(String filtro, int index ){
+        File archivo = null;  //apuntar al archivo almancenado DD
+        FileReader contenido = null;  //acceder a todo el contenido del archivo
+        BufferedReader linea = null; //accede linea a linea al contenido
+        String busqueda = "";
+        try{
+            archivo = new File("salas.txt");
+            contenido = new FileReader(archivo);
+            linea = new BufferedReader(contenido);
+            
+            String cadena=""; //variable captura los datos del archivo
+            while((cadena=linea.readLine()) != null){ //recorre todo el archivo
+                String dato[] = cadena.split(",");
+                if(dato[index].equals(filtro)){
+                    busqueda = dato[1];       
+                }
+                
+            }
+            int c =Integer.parseInt(busqueda); 
+           
+            capacidad = c; 
+            System.out.println(capacidad+"--");
+            int g = getCapacidad();
+            System.out.println(g+"***-");
+        }catch(IOException e){
+           
+        }
+        finally{
+            try{
+                if(contenido != null){
+                    contenido.close();
+                }
+            }catch(IOException e1){
+                
+            }
+        }
+    }
 
     public void mensaje(String texto){
         JOptionPane.showMessageDialog(null, texto);
@@ -246,6 +284,19 @@ public final class ventana_usuario extends javax.swing.JFrame {
             peliaver.setText(null);
             horaaver.setText(null);
             salaaver.setText(null);
+    }
+    
+    /**
+     * @return the capacidad
+     */
+    public int getCapacidad() {
+        return capacidad;
+    }
+    /**
+     * @param capacidad the capacidad to set
+     */
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
     }
     
     /**
@@ -504,23 +555,7 @@ public final class ventana_usuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void ver_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ver_1ActionPerformed
-         try {
-           
-            String s = String.valueOf(lista.getValueAt(clic_tabla, 3));
-            int cap = Integer.parseInt(s);
-            salaaver.setText(String.valueOf(cap));
-
-                      
-           
-            
-        } catch (Exception ex) {
-            
-            ex.printStackTrace();
-            
-        }
-        
-        
-        
+       
         Sillas nj = new Sillas();
         nj.setVisible(true);
         nj.setLocationRelativeTo(null);         
@@ -546,20 +581,18 @@ public final class ventana_usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void listaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaMouseClicked
-       clic_tabla = lista.rowAtPoint(evt.getPoint());
-        
-            
+            clic_tabla = lista.rowAtPoint(evt.getPoint());
+ 
             String nombre = ""+lista.getValueAt(clic_tabla, 0);
             String horario = ""+lista.getValueAt(clic_tabla, 1);
             String s = String.valueOf(lista.getValueAt(clic_tabla, 2));
-            String c = String.valueOf(lista.getValueAt(clic_tabla, 3));
-            int ca = Integer.parseInt(c);
-            int sal = Integer.parseInt(s);
-
+            
+            int sal = Integer.parseInt(s);//sala
+            buscarCapacidad(s,0);
+            
             peliaver.setText(nombre);
             horaaver.setText(horario);
             salaaver.setText(String.valueOf(sal));
-            capaver.setText(String.valueOf(ca));
  
     }//GEN-LAST:event_listaMouseClicked
 
