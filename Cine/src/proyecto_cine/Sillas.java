@@ -31,7 +31,7 @@ public class Sillas extends javax.swing.JFrame {
         
         
         
-        int aux = capacidad /2 ; 
+        int aux = capacidad ; 
         System.out.print(aux+"-");
         filas = aux ;
         columnas = aux ; 
@@ -43,7 +43,32 @@ public class Sillas extends javax.swing.JFrame {
                 cuadro[i][j]= new JButton();
                 cuadro[i][j].setBackground(Color.green);
                 cuadro[i][j].setBounds(x,y,30,30);
-                
+                int div;
+          if(capacidad>10 && capacidad<31){
+          
+          filas = capacidad/2;
+          columnas=columnas/2;
+          
+          }
+          if(capacidad<11){
+          
+          filas = capacidad/2;
+          columnas=columnas/2;
+          columnas=columnas+1;
+          
+          }
+          
+          else{
+          
+          filas = capacidad/10;
+          columnas=capacidad/10;
+          filas=filas+5;
+          columnas=columnas+1;
+          
+          }
+          
+          
+          
                 
                 Controlar bt = new Controlar();
                 cuadro[i][j].addActionListener(bt);
@@ -71,7 +96,12 @@ public class Sillas extends javax.swing.JFrame {
         
     }
     
-    
+    public void jButtonActionPerformed(java.awt.event.ActionEvent evt){
+         
+        
+             
+        }
+
  
          
     /**
