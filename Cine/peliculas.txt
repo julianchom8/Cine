@@ -1,5 +1,5 @@
-1,avengers,los vengadores infinity war,C:\Users\familia pinillos\Documents\NetBeansProjects\Proyecto_cine\Posters\avengers.jpg
-2,thor,un mundo oscuro,C:\Users\familia pinillos\Documents\NetBeansProjects\Proyecto_cine\Posters\thor.jpg
-3,batman,el caballero de la noche,C:\Users\familia pinillos\Documents\NetBeansProjects\Proyecto_cine\Posters\batman.jpg
-4,avatar,extraterrestres,C:\Users\familia pinillos\Documents\NetBeansProjects\Proyecto_cine\Posters\avatar.jpg
+1,avengers,los vengadores infinity war,C:\Users\familia pinillos\Documents\proyecto\Cine\Cine\Posters\avengers.jpg
+2,thor,un mundo oscuro,C:\Users\familia pinillos\Documents\proyecto\Cine\Cine\Posters\thor.jpg
+3,batman,el caballero de la noche,C:\Users\familia pinillos\Documents\proyecto\Cine\Cine\Posters\batman.jpg
+4,avatar,extraterrestres,C:\Users\familia pinillos\Documents\proyecto\Cine\Cine\Posters\avatar.jpg
 5,spidermaan,hombre araña,q

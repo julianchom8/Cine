@@ -1,2 +1,2 @@
-avengers,12 pm -  3  pm,1,2,55,
-avengers, 3  pm -  5  pm,2,2,55,
+avengers,12 pm -  3  pm,1,2,
+thor, 3  pm -  5  pm,2,2,
