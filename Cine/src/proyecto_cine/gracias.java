@@ -37,6 +37,7 @@ public class gracias extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(500, 234));
         setMinimumSize(new java.awt.Dimension(500, 234));
         setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N

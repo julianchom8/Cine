@@ -11,9 +11,10 @@ import javax.swing.JButton;
  * @author familia medina
  */
 public class Sillas extends javax.swing.JFrame {
-   private int filas ; 
-   private int columnas ;
+   private int filas = 0; 
+   private int columnas = 0;
    private int capacidad ;
+   public char [] vector;
 
     public String getSala() {
         return Sala;
@@ -60,57 +61,77 @@ public class Sillas extends javax.swing.JFrame {
         Hora =datos.getH_aver();
                 
         n_sala.setText("Sala : "+Sala);
-        
+        String r ="";
         int aux = capacidad ; 
-        System.out.print(aux+"-");
-        filas = aux ;
-        columnas = aux ; 
+
+        int raiz;
+        raiz = (int)(Math.sqrt(aux));
+        System.out.print(raiz);
+        if(raiz * raiz == aux){ //si se cumple la condición, es que a tiene raiz cuadrada exacta
+            
+            filas =  (int) Math.sqrt(aux);
+            columnas =(int) Math.sqrt(aux);
+        }else{
+            if (capacidad % 10 == 0){
+                   filas = capacidad /10;
+                   columnas = 10;
+            }else{
+                    for (int i = 2; i <= capacidad; i++){
+                         while (capacidad != 1){
+                              if (capacidad % i == 0 ){
+                                  capacidad = capacidad/i; 
+                                   r = r+i;
+
+                              } else break;
+
+                        }
+                    }
+                    System.out.print("¨¨"+r);
+               
+            vector = r.toCharArray();//la cadena se convierte a un arreglo
+            for (int m = 0 ; m<(vector.length-1) ; m++){
+                int digito = ((int)vector[m] & 0xF); 
+                int acum =digito ;
+                filas = acum +digito;
+            }
+        
+           columnas = aux/filas;
+             }
+        }
+        
+        System.out.print("***"+filas+"***"+columnas);
         cuadro = new JButton[filas][columnas];
-        int x = 10 ;
+        int x = 25 ;
         int y = 15 ;
+        
         for (int i = 0 ;  i<filas ; i++){
+            
             for(int j = 0 ;  j<columnas ; j++){
                 cuadro[i][j]= new JButton();
                 cuadro[i][j].setBackground(Color.green);
-                cuadro[i][j].setBounds(x,y,30,30);
-                int div;
-          if(capacidad>10 && capacidad<31){
-          
-          filas = capacidad/2;
-          columnas=columnas/2;
-          
-          }
-          if(capacidad<11){
-          
-          filas = capacidad/2;
-          columnas=columnas/2;
-          columnas=columnas+1;
-          
-          }
-          
-          else{
-          
-          filas = capacidad/10;
-          columnas=capacidad/10;
-          filas=filas+5;
-          columnas=columnas+1;
-          
-          }
-          
-          
-          
-                
+                cuadro[i][j].setBounds(x,y,50,50);
+                 int s = i*10;
+                 int s1 = j+1 ;
+                 int au = s+s1;
+                cuadro[i][j].setText(""+au);
+                cuadro[i][j].setFont(new java.awt.Font("Tahoma", 1, 10)); 
+               
                 Controlar bt = new Controlar();
                 cuadro[i][j].addActionListener(bt);
                 panelBotones.add(cuadro[i][j]);
                 
-                x+=50; // ubicacion en el panell no cambiar  
+                x+=55; // ubicacion en el panell no cambiar  
             }
-            x=10; // ubicacion , no cambiar 
-            y+=50;// ubicacion , no cambiar 
+
+            x=25; // ubicacion , no cambiar 
+            y+=55;// ubicacion , no cambiar 
         }   
     }
     
+    
+   
+
+
     private class Controlar implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -149,6 +170,7 @@ public class Sillas extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         panelBotones = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -195,7 +217,7 @@ public class Sillas extends javax.swing.JFrame {
         );
         panelBotonesLayout.setVerticalGroup(
             panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 352, Short.MAX_VALUE)
+            .addGap(0, 464, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -230,21 +252,30 @@ public class Sillas extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton2.setText("atras");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(379, 379, 379)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(244, 244, 244)
-                            .addComponent(n_sala, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(23, 23, 23)
+                        .addGap(244, 244, 244)
+                        .addComponent(n_sala, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(433, 433, 433)
+                                .addComponent(jButton1))
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
@@ -254,10 +285,15 @@ public class Sillas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(n_sala, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(17, 17, 17))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -282,6 +318,13 @@ public class Sillas extends javax.swing.JFrame {
           
           Sillas.this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ventana_usuario ini = new ventana_usuario();
+            ini.setLocationRelativeTo(null);
+            ini.setVisible(true);
+        Sillas.this.dispose();// TODO add your handling code here:        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -322,6 +365,7 @@ public class Sillas extends javax.swing.JFrame {
     private AdjustmentListener ajustar;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
