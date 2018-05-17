@@ -508,27 +508,6 @@ public final class ventana_administrador extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        panelpeliculas = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        codigo_pelicula = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        nombre_pelicula = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        sinopsis = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        buscar_foto = new javax.swing.JButton();
-        ruta_imagen = new javax.swing.JTextField();
-        guardar_pelicula = new javax.swing.JButton();
-        modificar_pelicula = new javax.swing.JButton();
-        eliminar_pelicula = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        lista_peliculas = new javax.swing.JTable();
-        limpiar = new javax.swing.JButton();
-        imagen = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         panelsalas = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -562,6 +541,27 @@ public final class ventana_administrador extends javax.swing.JFrame {
         verSala = new javax.swing.JTable();
         nombreS = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        panelpeliculas = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        codigo_pelicula = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        nombre_pelicula = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        sinopsis = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        buscar_foto = new javax.swing.JButton();
+        ruta_imagen = new javax.swing.JTextField();
+        guardar_pelicula = new javax.swing.JButton();
+        modificar_pelicula = new javax.swing.JButton();
+        eliminar_pelicula = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lista_peliculas = new javax.swing.JTable();
+        limpiar = new javax.swing.JButton();
+        imagen = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         atras = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
 
@@ -576,172 +576,6 @@ public final class ventana_administrador extends javax.swing.JFrame {
 
         jTabbedPane1.setBackground(new java.awt.Color(153, 153, 153));
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 51), 5));
-
-        panelpeliculas.setBackground(new java.awt.Color(0, 102, 102));
-        panelpeliculas.setMaximumSize(new java.awt.Dimension(706, 582));
-        panelpeliculas.setMinimumSize(new java.awt.Dimension(706, 582));
-        panelpeliculas.setPreferredSize(new java.awt.Dimension(706, 582));
-        panelpeliculas.setLayout(null);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("ADMINISTRADOR DE PELICULAS");
-        panelpeliculas.add(jLabel1);
-        jLabel1.setBounds(235, 12, 464, 34);
-
-        jPanel4.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 51), 3));
-        jPanel4.setMaximumSize(new java.awt.Dimension(921, 568));
-        jPanel4.setMinimumSize(new java.awt.Dimension(921, 568));
-        jPanel4.setLayout(null);
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Codigo de pelicula:");
-        jPanel4.add(jLabel2);
-        jLabel2.setBounds(100, 30, 150, 22);
-
-        codigo_pelicula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel4.add(codigo_pelicula);
-        codigo_pelicula.setBounds(280, 30, 250, 23);
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Nombre de pelicula:");
-        jPanel4.add(jLabel3);
-        jLabel3.setBounds(100, 60, 157, 22);
-
-        nombre_pelicula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        nombre_pelicula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombre_peliculaActionPerformed(evt);
-            }
-        });
-        jPanel4.add(nombre_pelicula);
-        nombre_pelicula.setBounds(280, 60, 250, 23);
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Sinopsis:");
-        jPanel4.add(jLabel5);
-        jLabel5.setBounds(100, 90, 70, 22);
-
-        sinopsis.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel4.add(sinopsis);
-        sinopsis.setBounds(180, 90, 350, 23);
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Imagen:");
-        jPanel4.add(jLabel4);
-        jLabel4.setBounds(100, 120, 66, 22);
-
-        buscar_foto.setText("Seleccionar imagen");
-        buscar_foto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscar_fotoActionPerformed(evt);
-            }
-        });
-        jPanel4.add(buscar_foto);
-        buscar_foto.setBounds(180, 120, 123, 23);
-
-        ruta_imagen.setPreferredSize(new java.awt.Dimension(198, 20));
-        jPanel4.add(ruta_imagen);
-        ruta_imagen.setBounds(320, 120, 210, 20);
-
-        guardar_pelicula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        guardar_pelicula.setText("Guardar pelicula");
-        guardar_pelicula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                guardar_peliculaActionPerformed(evt);
-            }
-        });
-        jPanel4.add(guardar_pelicula);
-        guardar_pelicula.setBounds(100, 170, 169, 31);
-
-        modificar_pelicula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        modificar_pelicula.setText("modificar pelicula");
-        modificar_pelicula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificar_peliculaActionPerformed(evt);
-            }
-        });
-        jPanel4.add(modificar_pelicula);
-        modificar_pelicula.setBounds(100, 220, 169, 30);
-
-        eliminar_pelicula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        eliminar_pelicula.setText("eliminar pelicula");
-        eliminar_pelicula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eliminar_peliculaActionPerformed(evt);
-            }
-        });
-        jPanel4.add(eliminar_pelicula);
-        eliminar_pelicula.setBounds(100, 270, 169, 31);
-
-        lista_peliculas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lista_peliculas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Codigo", "Nombre pelicula"
-            }
-        ));
-        lista_peliculas.setGridColor(new java.awt.Color(0, 102, 102));
-        lista_peliculas.setSelectionBackground(new java.awt.Color(0, 153, 51));
-        lista_peliculas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lista_peliculasMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(lista_peliculas);
-
-        jPanel4.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 380, 870, 140);
-
-        limpiar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        limpiar.setText("limpiar");
-        limpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                limpiarActionPerformed(evt);
-            }
-        });
-        jPanel4.add(limpiar);
-        limpiar.setBounds(440, 160, 85, 31);
-
-        imagen.setBackground(new java.awt.Color(2, 119, 119));
-        imagen.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        imagen.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel4.add(imagen);
-        imagen.setBounds(610, 20, 250, 340);
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Lista de peliculas");
-        jPanel4.add(jLabel11);
-        jLabel11.setBounds(30, 330, 210, 29);
-
-        panelpeliculas.add(jPanel4);
-        jPanel4.setBounds(10, 52, 917, 530);
-
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo_phixr.jpg"))); // NOI18N
-        jLabel14.setText("jLabel14");
-        panelpeliculas.add(jLabel14);
-        jLabel14.setBounds(0, 0, 950, 590);
-
-        jTabbedPane1.addTab("Administrar peliculas", panelpeliculas);
 
         panelsalas.setBackground(new java.awt.Color(0, 102, 102));
         panelsalas.setMaximumSize(new java.awt.Dimension(942, 589));
@@ -927,7 +761,7 @@ public final class ventana_administrador extends javax.swing.JFrame {
         man.add(agregarPelicula);
         agregarPelicula.setBounds(110, 110, 207, 36);
         man.add(peli_transmitir);
-        peli_transmitir.setBounds(360, 120, 40, 20);
+        peli_transmitir.setBounds(370, 110, 40, 20);
 
         horarios.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         horarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una hora", "12 pm -  3  pm", " 3  pm -  5  pm", " 5  pm -  8  pm", " 8  pm - 11 pm" }));
@@ -946,8 +780,10 @@ public final class ventana_administrador extends javax.swing.JFrame {
         });
         man.add(h);
         h.setBounds(370, 60, 39, 20);
+
+        hora_peli.setBackground(new java.awt.Color(0, 102, 102));
         man.add(hora_peli);
-        hora_peli.setBounds(320, 60, 40, 20);
+        hora_peli.setBounds(370, 140, 40, 20);
 
         h1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -955,7 +791,7 @@ public final class ventana_administrador extends javax.swing.JFrame {
             }
         });
         man.add(h1);
-        h1.setBounds(370, 90, 39, 20);
+        h1.setBounds(370, 80, 39, 20);
 
         jPanel3.add(man);
         man.setBounds(30, 110, 420, 170);
@@ -1018,6 +854,172 @@ public final class ventana_administrador extends javax.swing.JFrame {
         jLabel7.setBounds(0, 0, 950, 590);
 
         jTabbedPane1.addTab("Administrar Salas", panelsalas);
+
+        panelpeliculas.setBackground(new java.awt.Color(0, 102, 102));
+        panelpeliculas.setMaximumSize(new java.awt.Dimension(706, 582));
+        panelpeliculas.setMinimumSize(new java.awt.Dimension(706, 582));
+        panelpeliculas.setPreferredSize(new java.awt.Dimension(706, 582));
+        panelpeliculas.setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("ADMINISTRADOR DE PELICULAS");
+        panelpeliculas.add(jLabel1);
+        jLabel1.setBounds(235, 12, 464, 34);
+
+        jPanel4.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 51), 3));
+        jPanel4.setMaximumSize(new java.awt.Dimension(921, 568));
+        jPanel4.setMinimumSize(new java.awt.Dimension(921, 568));
+        jPanel4.setLayout(null);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Codigo de pelicula:");
+        jPanel4.add(jLabel2);
+        jLabel2.setBounds(100, 30, 150, 22);
+
+        codigo_pelicula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel4.add(codigo_pelicula);
+        codigo_pelicula.setBounds(280, 30, 250, 23);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Nombre de pelicula:");
+        jPanel4.add(jLabel3);
+        jLabel3.setBounds(100, 60, 157, 22);
+
+        nombre_pelicula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nombre_pelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombre_peliculaActionPerformed(evt);
+            }
+        });
+        jPanel4.add(nombre_pelicula);
+        nombre_pelicula.setBounds(280, 60, 250, 23);
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Sinopsis:");
+        jPanel4.add(jLabel5);
+        jLabel5.setBounds(100, 90, 70, 22);
+
+        sinopsis.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel4.add(sinopsis);
+        sinopsis.setBounds(180, 90, 350, 23);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Imagen:");
+        jPanel4.add(jLabel4);
+        jLabel4.setBounds(100, 120, 66, 22);
+
+        buscar_foto.setText("Seleccionar imagen");
+        buscar_foto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscar_fotoActionPerformed(evt);
+            }
+        });
+        jPanel4.add(buscar_foto);
+        buscar_foto.setBounds(180, 120, 123, 23);
+
+        ruta_imagen.setPreferredSize(new java.awt.Dimension(198, 20));
+        jPanel4.add(ruta_imagen);
+        ruta_imagen.setBounds(320, 120, 210, 20);
+
+        guardar_pelicula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        guardar_pelicula.setText("Guardar pelicula");
+        guardar_pelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardar_peliculaActionPerformed(evt);
+            }
+        });
+        jPanel4.add(guardar_pelicula);
+        guardar_pelicula.setBounds(100, 170, 190, 31);
+
+        modificar_pelicula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        modificar_pelicula.setText("modificar pelicula");
+        modificar_pelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificar_peliculaActionPerformed(evt);
+            }
+        });
+        jPanel4.add(modificar_pelicula);
+        modificar_pelicula.setBounds(100, 220, 190, 30);
+
+        eliminar_pelicula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        eliminar_pelicula.setText("eliminar pelicula");
+        eliminar_pelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminar_peliculaActionPerformed(evt);
+            }
+        });
+        jPanel4.add(eliminar_pelicula);
+        eliminar_pelicula.setBounds(100, 270, 190, 31);
+
+        lista_peliculas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lista_peliculas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Codigo", "Nombre pelicula"
+            }
+        ));
+        lista_peliculas.setGridColor(new java.awt.Color(0, 102, 102));
+        lista_peliculas.setSelectionBackground(new java.awt.Color(0, 153, 51));
+        lista_peliculas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lista_peliculasMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(lista_peliculas);
+
+        jPanel4.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 380, 870, 140);
+
+        limpiar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        limpiar.setText("limpiar");
+        limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarActionPerformed(evt);
+            }
+        });
+        jPanel4.add(limpiar);
+        limpiar.setBounds(425, 160, 110, 31);
+
+        imagen.setBackground(new java.awt.Color(2, 119, 119));
+        imagen.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        imagen.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel4.add(imagen);
+        imagen.setBounds(610, 20, 250, 340);
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Lista de peliculas");
+        jPanel4.add(jLabel11);
+        jLabel11.setBounds(30, 330, 210, 29);
+
+        panelpeliculas.add(jPanel4);
+        jPanel4.setBounds(10, 52, 917, 530);
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo_phixr.jpg"))); // NOI18N
+        jLabel14.setText("jLabel14");
+        panelpeliculas.add(jLabel14);
+        jLabel14.setBounds(0, 0, 950, 590);
+
+        jTabbedPane1.addTab("Administrar peliculas", panelpeliculas);
 
         jPanel1.add(jTabbedPane1);
         jTabbedPane1.setBounds(0, 0, 960, 627);
