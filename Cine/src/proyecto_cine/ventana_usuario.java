@@ -265,9 +265,8 @@ public final class ventana_usuario extends javax.swing.JFrame {
             int c =Integer.parseInt(busqueda); 
            
             capacidad = c; 
-            System.out.println(capacidad+"--");
+            
             int g = getCapacidad();
-            System.out.println(g+"***-");
         }catch(IOException e){
            
         }
@@ -305,7 +304,7 @@ public final class ventana_usuario extends javax.swing.JFrame {
         this.capacidad = capacidad;
     }
     
-        public static String getP_aver() {
+    public static String getP_aver() {
         return p_aver;
     }
 
@@ -339,8 +338,6 @@ public final class ventana_usuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         imagen = new javax.swing.JLabel();
         pel3 = new javax.swing.JLabel();
@@ -356,12 +353,12 @@ public final class ventana_usuario extends javax.swing.JFrame {
         horaaver = new javax.swing.JLabel();
         salaaver = new javax.swing.JLabel();
         ver_1 = new javax.swing.JButton();
-        factura = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("USUARIO");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
@@ -450,15 +447,6 @@ public final class ventana_usuario extends javax.swing.JFrame {
             }
         });
 
-        factura.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        factura.setText("Factura");
-        factura.setToolTipText("");
-        factura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                facturaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
@@ -481,9 +469,7 @@ public final class ventana_usuario extends javax.swing.JFrame {
                                     .addComponent(salaaver, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(horaaver, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(40, 40, 40)
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ver_1)
-                            .addComponent(factura, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ver_1))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelLayout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -502,7 +488,6 @@ public final class ventana_usuario extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ver_1)
                     .addGroup(panelLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -513,11 +498,12 @@ public final class ventana_usuario extends javax.swing.JFrame {
                         .addComponent(horaaver, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addComponent(salaaver, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(factura)
-                    .addComponent(jLabel4))
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(salaaver, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ver_1))))
                 .addContainerGap())
         );
 
@@ -562,7 +548,8 @@ public final class ventana_usuario extends javax.swing.JFrame {
        
         Sillas nj = new Sillas();
         nj.setVisible(true);
-        nj.setLocationRelativeTo(null);         
+        nj.setLocationRelativeTo(null);    
+        ventana_usuario.this.dispose();
                
     }//GEN-LAST:event_ver_1ActionPerformed
 
@@ -600,12 +587,6 @@ public final class ventana_usuario extends javax.swing.JFrame {
  
     }//GEN-LAST:event_listaMouseClicked
 
-    private void facturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturaActionPerformed
-          recibo r = new recibo();
-          r.setVisible(true);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_facturaActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -642,9 +623,6 @@ public final class ventana_usuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JButton factura;
     private javax.swing.JLabel horaaver;
     private javax.swing.JLabel imagen;
     private javax.swing.JButton jButton1;

@@ -30,7 +30,14 @@ import javax.swing.JOptionPane;
  * @author usuario
  */
 public class recibo extends javax.swing.JFrame {
-
+   public static String SalaI ;  
+   public static String PeliculaI ; 
+   public static String HoraI ;
+   public int numero_asientos=0;
+   public int total;
+    
+    Sillas data;
+    
     /**
      * Creates new form recibo
      */
@@ -38,47 +45,65 @@ public class recibo extends javax.swing.JFrame {
     private static Font fontNormal = new Font(Font.FontFamily.COURIER, 11, Font.NORMAL);
     
     public recibo() {
+        data = new Sillas();
+        
         initComponents();
     }
 public void crearpdf(){
     
+     SalaI = data.getSala();
+     PeliculaI = data.getPelicula();
+     HoraI = data.getHora();
+
+     
+     total= numero_asientos*7000;
+     
+    
      String datos[][]=new String[3][3];
-     datos[0][0]="";
-     datos[0][1]="";
-     datos[0][2]="$ 7.000";
-     datos[1][0]="";
-     datos[1][1]="";
-     datos[1][2]="";
+     datos[0][0]=PeliculaI+" ";
+     datos[0][1]=SalaI+" ";
+     datos[0][2]=HoraI+" ";
+     datos[1][0]="$ 7.000 ";
      
      String rutaimagen;
      
      try {
-   generarFactura(datos, "", "CineUDEC |  |   ");
+   generarFactura(datos, "", " CineUDEC                  ");
   } catch (IOException | DocumentException e) {
    e.printStackTrace();
   }
-     JOptionPane.showMessageDialog(null, "PDF Generado!");
+     JOptionPane.showMessageDialog(null, "se ha generado su recibo !");
      
     
     
     }
     
     public void generarFactura(String [][]datos, String nombre, String tituloFactura) throws IOException, DocumentException {
-     String rutaImagen=null;
-      Document document = getDocument();
-      PdfWriter.getInstance(document, new FileOutputStream("factura.pdf"));
-      document.open();
+        String rutaImagen=null;
+        Document document = getDocument();
+        PdfWriter.getInstance(document, new FileOutputStream("factura.pdf"));
+        document.open();
       
-      PdfPTable table = getTable();
-      factura img = new factura();
-      //img.generarpdf("C:\\Users\\usuario\\Documents\\NetBeansProjects\\proyecto cine\\proyecto cine\\Proyecto_cine\\src\\imagenes");
+        PdfPTable table = new PdfPTable(4); 
+    //Datos del ancho de cada columna.
+        table.setWidths(new float[] {15,10,20,10});
+        factura img = new factura();
+        //img.generarpdf("C:\\Users\\usuario\\Documents\\NetBeansProjects\\proyecto cine\\proyecto cine\\Proyecto_cine\\src\\imagenes");
       
-    document.add(getHeader(tituloFactura));
-    document.add(getInformation(" "));
-        
-        table.addCell(getCell("SALA"));
-        table.addCell(getCell("HORARIO"));
-        table.addCell(getCell("PRECIO"));
+        document.add(getHeader(tituloFactura));
+    
+        String impr = this.nombre.getText();
+        String impr2 = telefono.getText();
+        String impr3 = documento.getText();
+        document.add(getInformation(" "));
+        document.add(getInformation("      Nombre: "+impr));
+        document.add(getInformation("      Telefono: "+impr2));
+        document.add(getInformation("      Documento: "+impr3));
+        document.add(getInformation(" "));
+        table.addCell(getCell("Pelicula "));
+        table.addCell(getCell("Sala "));
+        table.addCell(getCell(" Hora "));
+        table.addCell(getCell("Precio "));
         
         for(int i=0;i<datos.length;i++){
          for(int j=0;j<datos[0].length;j++){
@@ -89,26 +114,17 @@ public void crearpdf(){
         }
         
         table.addCell(getCell(" "));
-        table.addCell(getCell(" "));
-        table.addCell(getCell(" "));
-         String impr = this.nombre.getText();
-         String impr2 = telefono.getText();
-        String impr3 = documento.getText(); 
-         
-         
         document.add(table);
-        document.add(getInformation("Nombre:"+impr));
-        document.add(getInformation("Telefono:"+impr2));
-        document.add(getInformation("Documento"+impr3));
+        document.add(getInformation(" "));
         document.add(getInformationFooter("Gracias por visitarnos!"));
-        document.add(getInformationFooter("velvas prontos!"));
+        document.add(getInformationFooter("vuelve pronto!")); 
         
-            document.close();
+        document.close();
       
      }
     public void generarpdf(String header,String info,String footer,String rutaImagen,String salida){
         try {
-            Document doc = new Document(PageSize.A4, 36,36,10,10);
+            Document doc = new Document(PageSize.LETTER, 36,36,25,25);
             PdfWriter.getInstance(doc,new FileOutputStream(salida));
             doc.open();
             doc.add(getHeader(header));
@@ -142,7 +158,7 @@ public void crearpdf(){
      private Paragraph getInformation(String informacion) {
      Paragraph paragraph = new Paragraph();
      Chunk chunk = new Chunk();
-    paragraph.setAlignment(Element.ALIGN_CENTER);
+    paragraph.setAlignment(Element.ALIGN_LEFT);
     chunk.append(informacion);
     chunk.setFont(fontNormal);
     paragraph.add(chunk);
@@ -222,7 +238,6 @@ public void crearpdf(){
         jLabel7 = new javax.swing.JLabel();
         documento = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        imprimir = new javax.swing.JButton();
 
         jButton1.setText("CREAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -246,96 +261,61 @@ public void crearpdf(){
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(624, 483));
+        setMinimumSize(new java.awt.Dimension(624, 483));
+        setPreferredSize(new java.awt.Dimension(624, 483));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
         Crear.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Crear.setForeground(new java.awt.Color(255, 255, 0));
         Crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
-        Crear.setText("CREAR");
+        Crear.setText("Ver factura");
         Crear.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Crear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CrearActionPerformed(evt);
             }
         });
+        getContentPane().add(Crear);
+        Crear.setBounds(240, 360, 130, 38);
 
         jLabel5.setFont(new java.awt.Font("Traditional Arabic", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 0, 0));
         jLabel5.setText("TELEFONO:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(120, 260, 137, 44);
+        getContentPane().add(telefono);
+        telefono.setBounds(270, 270, 210, 30);
+        getContentPane().add(nombre);
+        nombre.setBounds(270, 221, 210, 30);
 
         jLabel6.setBackground(new java.awt.Color(51, 51, 51));
         jLabel6.setFont(new java.awt.Font("Traditional Arabic", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel6.setText("NOMBRES :");
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel6.setText("NOMBRE:");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(120, 220, 124, 41);
 
         jLabel7.setFont(new java.awt.Font("Traditional Arabic", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 0, 0));
         jLabel7.setText("DOCUMENTO :");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(120, 310, 170, 40);
+
+        documento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                documentoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(documento);
+        documento.setBounds(300, 320, 180, 30);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoTaquilla.jpg"))); // NOI18N
-
-        imprimir.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        imprimir.setForeground(new java.awt.Color(255, 255, 0));
-        imprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
-        imprimir.setText("Imprimir");
-        imprimir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(documento, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(78, 78, 78)
-                                .addComponent(imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(135, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(205, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(documento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(82, 82, 82))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 486, Short.MAX_VALUE))
-        );
+        jLabel8.setText("jLabel8");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(0, -10, 630, 490);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -355,7 +335,17 @@ public void crearpdf(){
         }catch (IOException ex) {
             ex.printStackTrace();
         }
+        
+        
+                gracias ini = new gracias();
+            ini.setLocationRelativeTo(null);
+            ini.setVisible(true);
+        recibo.this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_CrearActionPerformed
+
+    private void documentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_documentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_documentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -400,7 +390,6 @@ public void crearpdf(){
     private javax.swing.JTextField JT2;
     private javax.swing.JTextField JT3;
     private javax.swing.JTextField documento;
-    private javax.swing.JButton imprimir;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

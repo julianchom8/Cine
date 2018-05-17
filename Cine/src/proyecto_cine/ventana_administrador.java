@@ -566,6 +566,7 @@ public final class ventana_administrador extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("ADMINISTRADOR");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 51));
@@ -764,7 +765,7 @@ public final class ventana_administrador extends javax.swing.JFrame {
         peli_transmitir.setBounds(370, 110, 40, 20);
 
         horarios.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        horarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una hora", "12 pm -  3  pm", " 3  pm -  5  pm", " 5  pm -  8  pm", " 8  pm - 11 pm" }));
+        horarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una hora", "12 pm -  3  pm", "3  pm -  5  pm", "5  pm -  8  pm", "8  pm - 11 pm" }));
         horarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 horariosActionPerformed(evt);
